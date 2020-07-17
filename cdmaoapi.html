@@ -1,0 +1,257 @@
+﻿<!--
+名称：cdmaoapi库帮助文档
+撰写：冷鱼花茶
+更新日期：2020.7.17
+库开发：冷鱼花茶
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cdmaoapi库官方文档</title>
+    <link rel="stylesheet" href="static/css/public.css" type="text/css">
+    <link rel="stylesheet" href="static/css/index.css" type="text/css">
+  
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600&display=swap" rel="stylesheet">
+
+
+<style>
+
+
+.container {
+
+  color: #cccccc;
+  font-family: "Nunito", sans-serif;
+  width: 70%;
+  border-radius: 7px;
+  padding: 5%;
+  margin: 5% auto;
+}
+
+.flex {
+  justify-content: space-around;
+}
+.flex2 {
+  border-right: 0.1px solid rgba(178, 170, 171, 0.185);
+}
+.flex_content {
+
+}
+.flex_content h2 {
+  font-weight: 600;
+}
+.flex_content h4 {
+  font-weight: 400;
+}
+.flex_content span {
+  font-weight: 200;
+}
+.flex_content h4 {
+  margin: 0;
+}
+.flex_content ul {
+  padding-inline-start: 7%;
+  margin: 20% 0;
+}
+.flex_content ul li {
+  font-weight: 200;
+}
+.flex_content button {
+  outline: none;
+  border: none;
+  background: #aa2b33;
+  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+}
+.flex_content:nth-of-type(1) button {
+  background: transparent;
+  border: 1px solid #aa2b33;
+  color: #aa2b33;
+}
+
+footer {
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: #3983ce;
+}
+
+@media screen and (max-width: 540px) {
+  .flex {
+    flex-direction: column;
+  }
+  .flex2 {
+    border: none;
+  }
+}
+
+
+</style>
+
+</head>
+<body>
+    <div id="div_body">
+        <div id="top">
+            <div class="top_center max_div center_div">
+                <div class="top_center_left">
+                  
+                    <div class="div_title">
+                        cdmaoapi库官方文档
+                    </div>
+                </div>
+                <div class="top_center_right">
+                    <div class="div_login">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="type">
+            <div class="type_center max_div center_div">
+                <ul>
+                    <li v-bind:class="{'li_show':type_ID==0}" v-on:click="type_ID=0">帮助文档</li>
+                    <li v-bind:class="{'li_show':type_ID==1}" v-on:click="type_ID=1">安装方法</li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <div class="content_center max_div center_div">
+                <div v-bind:class="{'div_show':type_ID==0}" id="div_platformInterface">
+                    <div class="div_menu">
+                        <div class="div_menu_input">
+                            <div>
+                                <div class="div_input">
+                                    
+                                       
+  <img src="static/picture/logo.png" alt="" style="width:170px;height:40px;">
+                                       
+                              
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div_menu_list">
+                            <div class="div_scrollbar">
+                                <ul v-if="!platformInterface.if_search">
+                                    <li v-for="(menu,index) in platformInterface.dataList">
+                                        <div class="li_title li_check " v-bind:class="{'li_show':menu.show}" v-on:click="clickJump(getMadianIdByTitle(index,platformInterface.id),platformInterface.id,index,null)">{{menu.title}}</div>
+                                        <ul class="li_ul">
+                                            <li class="li_check" v-for="(menu_li,index2) in menu.data"  v-bind:class="{'li_show':menu_li.show}" v-on:click="clickJump(getMadianIdByTitle_t(index,index2,platformInterface.id),platformInterface.id,null,index+'_'+index2)"><div>{{menu_li.title}}</div></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul v-if="platformInterface.if_search" class="ul_shousuo">
+                                    <li v-for="(menu,index) in platformInterface.dataList">
+                                        <ul class="li_ul">
+                                            <li class="li_check" v-for="(menu_li,index2) in menu.data" v-if="menu_li.title_show"  v-bind:class="{'li_show':menu_li.show}" v-on:click="clickJump(getMadianIdByTitle_t(index,index2,platformInterface.id),platformInterface.id,null,index+'_'+index2)"><div>{{menu_li.title}}</div></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div_list div_scrollbar">
+                        <!--<ul>-->
+                        <div>
+                            <ul>
+                                <li  v-for="(li,index) in platformInterface.dataList" v-bind:id="getMadianIdByTitle(index,platformInterface.id)">
+                                    <div class="li_title">{{li.title}}</div>
+                                    <div class="li_text" >
+                                        <ul>
+                                            <li v-for="(li_d,index2) in li.data" v-bind:id="getMadianIdByTitle_t(index,index2,platformInterface.id)">
+                                                <div class="li_name">{{li.title}}-{{li_d.title}}</div>
+                                                <div class="li_mode">
+                                                    <div>
+                                                        <div>{{li_d.type}}</div>
+                                                    </div>
+                                                    <div>{{li_d.url}}</div>
+                                                </div>
+                                                <div class="li_tit" v-if="ifShowParameter(li_d.parameter)">参数</div>
+                                                <div class="li_table" v-if="ifShowParameter(li_d.parameter)">
+                                                    <table>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>字段</th>
+                                                            <th>类型</th>
+                                                            <th>描述</th>
+															<th>返回值</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr v-for="t in li_d.parameter">
+                                                            <td>{{t.key}}</td>
+                                                            <td>{{t.type}}</td>
+                                                            <td v-html="t.describe">{{t.describe}}</td>
+<td>{{t.ru}}</td>
+															</tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--</ul>-->
+                    </div>
+                </div>
+                <div  v-bind:class="{'div_show':type_ID==1}" id="div_hardwareInterface">
+				
+
+
+
+
+
+
+<div class="container flex">
+    <div class="flex_content flex2">
+        <h2>安装库方法</h2>
+        <h4>（海龟编辑器为例子）</h4>
+        <h5>疯癫工作室-冷鱼花茶制作</h5>
+        <ul>
+            <li>1.下载cdmaoapi库的py文件</li>
+            <li>2.打开文件夹Pyblock\resources\app（其它编辑器可忽略）</li>
+            <li>3.然后再放入\Python-winxx\Lib文件夹里面即可</li>
+			 <li>3.新建py文件然后导入cdmaoapi库运行看控制台提示进行配置即可</li>
+        </ul>
+        <button>
+            下载cdmaopai.py（V1.0.0）
+        </button>
+    </div>
+   
+    </div>
+</div>
+
+
+
+ 
+
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	
+	
+	
+	  <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/vue.js"></script>
+    <script src="static/js/public.js"></script>
+    <script src="static/js/index.js"></script>
+	    <script src="static/js/data.js"></script>
+	
+	
+</body>
+</html>
