@@ -1,4 +1,4 @@
-﻿#top{
+#top{
     background-color:#454545 ;
     color: #fff;
 }
@@ -90,13 +90,13 @@
     position: absolute;
     width: 100%;
     left: 0px;
-    top: 100px;
+    top: 70px;
     bottom: 0px;
 }
 #content .content_center{
     margin: 0px auto;
-    height: 100%;
-    padding: 15px 15px;
+    height: 98%;
+
 }
 #content .content_center>div{
     width: 100%;
