@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>抖音热榜视频</title>
+
+   <script type="text/javascript" src="http://viyrs.com/js/jq.js"></script>
+   
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+.ztw{
+width:70%;
+height:500px;
+border-style:solid;
+border-width:medium;
+margin-top:20px;
+
+}
+.js{
+width:50%;
+height:100%;
+border-style:solid;
+border-width:medium;
+margin-top:20px;
+
+}
+body,html{
+background-image: url("1.jpg");
+background-repeat: no-repeat; background-attachment: fixed;
+}
+a{
+color:red;}
+</style>
+
+
+</head>
+<body>
+
+
+
+	   <div style="background: rgba(0, 0, 0, 0.4);">
+	 <center><div style="padding-top:100px; color:white;">
+	 <p style="font-size:60px;font-weight:600">抖音热榜视频</p>
+
+	 <p>岭南美术实验中学高二（9）班专属体验</p>
+	 
+
+	 
+
+<div class="sw">
+
+
+
+</div>
+
+
+	 </div>
+	 
+	 
+	 
+	 
+ <script>
+
+
+$(document).ready(function(){
+
+    $.get("http://api.tianapi.com/txapi/dyvideohot/index?key=43e79a4a8b3b6c3c3566f5cf68486d60",
+    function(data,status){
+		console.log(data);
+		for(var i=0;i<=20;i++){
+		$('.sw').append('<div class="ztw"><video poster="'+data.newslist[i].coverurl+'" height="100%" src="'+data.newslist[i].playaddr+'" controls="controls"></video></div><div class="js"><a href="'+data.newslist[i].shareurl+'" target="_blank"><h3>'+data.newslist[i].title+'</h3><p>作者：'+data.newslist[i].author+'</p></a></div><hr>');
+		}
+   });
+
+});
+
+
+
+
+
+			
+		
+
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+</html>
